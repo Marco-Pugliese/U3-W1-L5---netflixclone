@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <MyHeader />
-      <SettingPage />
+      {/* <SettingPage /> */}
       <MyBody />
       <MyFooter />
     </>
