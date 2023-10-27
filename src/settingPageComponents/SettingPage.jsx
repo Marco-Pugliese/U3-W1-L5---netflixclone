@@ -53,8 +53,8 @@ class SettingPage extends Component {
                   </Dropdown>
                 </Container>
               </Container>
-              <Container className="my-4 border-bottom">
-                <Container>Maturity Settings</Container>
+              <Container className="py-4 border-bottom">
+                <Container className="py-2">Maturity Settings:</Container>
               </Container>
             </Col>
           </Row>
