@@ -7,7 +7,7 @@ class MyBody extends Component {
       <>
         <SingleCarousel h2="Get Ready for X-Mas" searchKey="christmas" />
         <SingleCarousel
-          h2="Will be removed this Jan 1st"
+          h2="Will be removed on January 1st"
           searchKey="harry potter"
           id="warning"
         />

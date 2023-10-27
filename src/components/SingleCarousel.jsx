@@ -1,9 +1,10 @@
 import { Component } from "react";
-import { Carousel, Col, Container, Row } from "react-bootstrap";
+import { Carousel, Col, Container, Row, Spinner } from "react-bootstrap";
 
 class SingleCarousel extends Component {
   state = {
     myArrayOfObjects: [],
+    isContentLoading: true,
   };
   componentDidMount = (props) => {
     fetch("http://www.omdbapi.com/?apikey=9b8cbbea&s=" + this.props.searchKey)
@@ -19,6 +20,7 @@ class SingleCarousel extends Component {
           return this.setState({
             ...this.state.myArrayOfObjects,
             myArrayOfObjects: data.Search,
+            isContentLoading: false,
           });
         });
       })
@@ -29,16 +31,24 @@ class SingleCarousel extends Component {
   };
   render(props) {
     return (
-      <Container fluid className="px-5 my-bg ">
+      <Container fluid className="px-5 my-bg">
         <Row className="pt-4 text-white">
           <h2 className="fs-4">{this.props.h2}</h2>
         </Row>
+        {this.state.isContentLoading && (
+          <Col className="position-relative start-50 my-5">
+            <Spinner animation="border" variant="danger" role="status" />
+          </Col>
+        )}
 
         <Row className="gx-2 px-5">
           {this.state.myArrayOfObjects
             .filter((myArrayOfObjects, i) => i < 5)
             .map((singlePoster) => (
-              <Col className="d-none d-md-flex d-lg-none">
+              <Col
+                key={singlePoster.Poster}
+                className="d-none d-md-flex d-lg-none"
+              >
                 <img
                   src={singlePoster.Poster}
                   alt="single-poster"
@@ -51,7 +61,10 @@ class SingleCarousel extends Component {
           {this.state.myArrayOfObjects
             .filter((myArrayOfObjects, i) => i < 6)
             .map((singlePoster) => (
-              <Col className="d-none d-lg-flex d-xl-none">
+              <Col
+                key={singlePoster.Poster}
+                className="d-none d-lg-flex d-xl-none"
+              >
                 <img
                   src={singlePoster.Poster}
                   alt="single-poster"
@@ -64,7 +77,10 @@ class SingleCarousel extends Component {
           {this.state.myArrayOfObjects
             .filter((myArrayOfObjects, i) => i < 8)
             .map((singlePoster) => (
-              <Col className="d-none d-xl-flex d-xxl-none">
+              <Col
+                key={singlePoster.Poster}
+                className="d-none d-xl-flex d-xxl-none"
+              >
                 <img
                   src={singlePoster.Poster}
                   alt="single-poster"
@@ -77,7 +93,7 @@ class SingleCarousel extends Component {
           {this.state.myArrayOfObjects
             .filter((myArrayOfObjects, i) => i < 10)
             .map((singlePoster) => (
-              <Col className="d-none d-xxl-flex">
+              <Col key={singlePoster.Poster} className="d-none d-xxl-flex">
                 <img
                   src={singlePoster.Poster}
                   alt="single-poster"
@@ -91,7 +107,7 @@ class SingleCarousel extends Component {
             {this.state.myArrayOfObjects
               .filter((myArrayOfObjects, i) => i < 10)
               .map((singlePoster) => (
-                <Carousel.Item>
+                <Carousel.Item key={singlePoster.Poster}>
                   <img
                     src={singlePoster.Poster}
                     alt="single-poster"
@@ -107,7 +123,7 @@ class SingleCarousel extends Component {
               {this.state.myArrayOfObjects
                 .filter((myArrayOfObjects, i) => i > 5 && i < 11)
                 .map((singlePoster) => (
-                  <Carousel.Item>
+                  <Carousel.Item key={singlePoster.Poster}>
                     <img
                       src={singlePoster.Poster}
                       alt="single-poster"
@@ -122,7 +138,7 @@ class SingleCarousel extends Component {
               {this.state.myArrayOfObjects
                 .filter((myArrayOfObjects, i) => i < 5)
                 .map((singlePoster) => (
-                  <Carousel.Item>
+                  <Carousel.Item key={singlePoster.Poster}>
                     <img
                       src={singlePoster.Poster}
                       alt="single-poster"
