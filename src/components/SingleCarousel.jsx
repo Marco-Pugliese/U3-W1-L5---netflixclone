@@ -41,54 +41,41 @@ class SingleCarousel extends Component {
           </Col>
         )}
 
-        <Row className="gx-2 px-5">
-          {this.state.myArrayOfObjects
-            .filter((myArrayOfObjects, i) => i < 5)
-            .map((singlePoster) => (
-              <Col
-                key={singlePoster.Poster}
-                className="d-none d-md-flex d-lg-none"
-              >
-                <img
-                  src={singlePoster.Poster}
-                  alt="single-poster"
-                  width={"100%"}
-                />
-              </Col>
-            ))}
-        </Row>
-        <Row className="gx-2 px-5">
-          {this.state.myArrayOfObjects
-            .filter((myArrayOfObjects, i) => i < 6)
-            .map((singlePoster) => (
-              <Col
-                key={singlePoster.Poster}
-                className="d-none d-lg-flex d-xl-none"
-              >
-                <img
-                  src={singlePoster.Poster}
-                  alt="single-poster"
-                  width={"100%"}
-                />
-              </Col>
-            ))}
-        </Row>
-        <Row className="gx-2 px-5">
-          {this.state.myArrayOfObjects
-            .filter((myArrayOfObjects, i) => i < 8)
-            .map((singlePoster) => (
-              <Col
-                key={singlePoster.Poster}
-                className="d-none d-xl-flex d-xxl-none"
-              >
-                <img
-                  src={singlePoster.Poster}
-                  alt="single-poster"
-                  width={"100%"}
-                />
-              </Col>
-            ))}
-        </Row>
+        <Container className="d-none d-md-flex d-xxl-none">
+          <Carousel>
+            <Carousel.Item>
+              <Row>
+                {this.state.myArrayOfObjects
+                  .filter((myArrayOfObjects, i) => i < 5)
+                  .map((singlePoster) => (
+                    <Col key={singlePoster.Poster}>
+                      <img
+                        src={singlePoster.Poster}
+                        alt="single-poster"
+                        width={"100%"}
+                      />
+                    </Col>
+                  ))}
+              </Row>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Row>
+                {this.state.myArrayOfObjects
+                  .filter((myArrayOfObjects, i) => i > 4 && i < 10)
+                  .map((singlePoster) => (
+                    <Col key={singlePoster.Poster}>
+                      <img
+                        src={singlePoster.Poster}
+                        alt="single-poster"
+                        width={"100%"}
+                      />
+                    </Col>
+                  ))}
+              </Row>
+            </Carousel.Item>
+          </Carousel>
+        </Container>
+
         <Row className="gx-2 px-5">
           {this.state.myArrayOfObjects
             .filter((myArrayOfObjects, i) => i < 10)
